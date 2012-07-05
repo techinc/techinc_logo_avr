@@ -28,10 +28,10 @@ const uint8_t grid_output[16] =
 
 const uint8_t grid_high[16] =
 {
-	(ORANGE),   (BLUE), /* clockwise, starting north */
-	(GREEN),    (BLUE),
-	(GREEN),  (PURPLE),
-	(ORANGE), (PURPLE),
+   (BLUE),	(ORANGE), /* clockwise, starting north */
+    (BLUE),	(GREEN),
+  (PURPLE),	(GREEN),
+ (PURPLE),	(ORANGE),
 	0
 };
 
