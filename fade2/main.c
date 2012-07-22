@@ -3,8 +3,6 @@
 #include <util/delay_basic.h>
 #include <stdint.h>
 
-#include <avr/pgmspace.h>
-
 #define PBB0 (1<<0)
 #define PBB1 (1<<1)
 #define PBB2 (1<<2)
@@ -25,13 +23,6 @@ const uint8_t grid_output[] =
 	(GREEN|BLUE),       (BLUE|GREEN),
 	(GREEN|PURPLE),   (PURPLE|GREEN),
 	(ORANGE|PURPLE), (PURPLE|ORANGE),
-
-	(ORANGE|BLUE),     (BLUE|ORANGE), /* clockwise, starting north */
-	(GREEN|BLUE),       (BLUE|GREEN),
-	(GREEN|PURPLE),   (PURPLE|GREEN),
-	(ORANGE|PURPLE), (PURPLE|ORANGE),
-
-	0
 };
 
 const uint8_t grid_high[] =
@@ -40,13 +31,6 @@ const uint8_t grid_high[] =
 	(GREEN),    (BLUE),
 	(GREEN),  (PURPLE),
 	(ORANGE), (PURPLE),
-
-	(ORANGE),   (BLUE), /* clockwise, starting north */
-	(GREEN),    (BLUE),
-	(GREEN),  (PURPLE),
-	(ORANGE), (PURPLE),
-
-	0
 };
 
 const uint8_t fade[] =
@@ -68,12 +52,11 @@ void led_on(uint8_t which)
 	led_on_ll(output, high);
 }
 
-
 int main(void)
 {
 	uint8_t phase, led, pwm, i;
 
-	for ( phase = 0; ; phase++ )
+	for ( phase = 0 ;; phase++ )
 	{
 		for ( i=0, led=phase; i<8; i++)
 		{
